@@ -1,192 +1,196 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: WeeklyExpenseScreen(),
     debugShowCheckedModeBanner: false,
   ));
 }
 
 class WeeklyExpenseScreen extends StatelessWidget {
+  const WeeklyExpenseScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 2,
-                  blurRadius: 8,
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // Header
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Weekly Expense",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 2,
+                    blurRadius: 8,
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Weekly Expense",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              "From 1 - 6 Apr, 2024",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          style: TextButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 8),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              side: BorderSide(color: Colors.grey.shade400),
                             ),
                           ),
-                          SizedBox(height: 4),
-                          Text(
-                            "From 1 - 6 Apr, 2024",
+                          child: const Text(
+                            "View Report",
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.grey,
+                              color: Colors.black,
                             ),
                           ),
-                        ],
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            side: BorderSide(color: Colors.grey.shade400),
-                          ),
                         ),
-                        child: Text(
-                          "View Report",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 16),
-                // Circle Chart
-                SizedBox(
-                  width: 300,
-                  height: 300,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      CircleWidget(
-                        radius: 80,
-                        backgroundColor: Color(0xFFEEEAFB),
-                        text: "48%",
-                        textColor: Color(0xFF562BDF),
-                      ),
-                      Positioned(
-                        top: 40,
-                        right: 50,
-                        child: CircleWidget(
-                          radius: 60,
-                          backgroundColor: Color(0xFFE4F5ED),
-                          text: "32%",
-                          textColor: Color(0xFF67B68D),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Positioned(
+                          right: MediaQuery.of(context).size.width * 0.4,
+                          bottom: 50,
+                          child: const CircleWidget(
+                            radius: 70,
+                            backgroundColor: Color(0xFFEEEAFB),
+                            text: "48%",
+                            textColor: Color(0xFF562BDF),
+                          ),
                         ),
-                      ),
-                      Positioned(
-                        bottom: 40,
-                        left: 60,
-                        child: CircleWidget(
-                          radius: 40,
-                          backgroundColor: Color(0xFFFBE5E8),
-                          text: "13%",
-                          textColor: Color(0xFFD6596E),
+                        Positioned(
+                          left: MediaQuery.of(context).size.width * 0.52,
+                          top: 0,
+                          child: const CircleWidget(
+                            radius: 55,
+                            backgroundColor: Color(0xFFE4F5ED),
+                            text: "32%",
+                            textColor: Color(0xFF67B68D),
+                          ),
                         ),
-                      ),
-                      Positioned(
-                        bottom: 20,
-                        right: 50,
-                        child: CircleWidget(
-                          radius: 30,
-                          backgroundColor: Color(0xFFFAF2E2),
-                          text: "7%",
-                          textColor: Color(0xFFE09F65),
+                        Positioned(
+                          left: MediaQuery.of(context).size.width * 0.52,
+                          top: 110,
+                          child: const CircleWidget(
+                            radius: 40,
+                            backgroundColor: Color(0xFFFBE5E8),
+                            text: "13%",
+                            textColor: Color(0xFFD6596E),
+                          ),
                         ),
-                      ),
-                    ],
+                        Positioned(
+                          right: MediaQuery.of(context).size.width * 0.15,
+                          bottom: 78,
+                          child: const CircleWidget(
+                            radius: 25,
+                            backgroundColor: Color(0xFFFAF2E2),
+                            text: "7%",
+                            textColor: Color(0xFFE09F65),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 16),
-                // Dashed Divider
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: DashDivider(),
-                ),
-                SizedBox(height: 16),
-                // Expense Rows
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: ExpenseRow(
-                              label: "Grocery",
-                              amount: "\$758.20",
-                              color: Color(0xFF8D6DF2),
-                            ),
-                          ),
-                          SizedBox(width: 16),
-                          Expanded(
-                            child: ExpenseRow(
-                              label: "Food & Drink",
-                              amount: "\$758.20",
-                              color: Color(0xFF58BD81),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 16),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: DashDivider(),
-                      ),
-                      SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: ExpenseRow(
-                              label: "Shopping",
-                              amount: "\$758.20",
-                              color: Color(0xFFE55A5F),
-                            ),
-                          ),
-                          SizedBox(width: 16),
-                          Expanded(
-                            child: ExpenseRow(
-                              label: "Transportation",
-                              amount: "\$758.20",
-                              color: Color(0xFFEEA14D),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  SizedBox(height: 16),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: DashDivider(),
                   ),
-                ),
-                SizedBox(height: 16),
-              ],
+                  SizedBox(height: 16),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: ExpenseRow(
+                                label: "Grocery",
+                                amount: "\$758.20",
+                                color: Color(0xFF8D6DF2),
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            Expanded(
+                              child: ExpenseRow(
+                                label: "Food & Drink",
+                                amount: "\$758.20",
+                                color: Color(0xFF58BD81),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          child: DashDivider(),
+                        ),
+                        SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: ExpenseRow(
+                                label: "Shopping",
+                                amount: "\$758.20",
+                                color: Color(0xFFE55A5F),
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            Expanded(
+                              child: ExpenseRow(
+                                label: "Transportation",
+                                amount: "\$758.20",
+                                color: Color(0xFFEEA14D),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+              ),
             ),
           ),
         ),
@@ -202,6 +206,7 @@ class CircleWidget extends StatelessWidget {
   final Color textColor;
 
   const CircleWidget({
+    super.key,
     required this.radius,
     required this.backgroundColor,
     required this.text,
@@ -231,6 +236,7 @@ class ExpenseRow extends StatelessWidget {
   final Color color;
 
   const ExpenseRow({
+    super.key,
     required this.label,
     required this.amount,
     required this.color,
@@ -239,18 +245,19 @@ class ExpenseRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             CircleAvatar(
               radius: 6,
               backgroundColor: color,
             ),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Text(
               label,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -258,13 +265,14 @@ class ExpenseRow extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Text(
           amount,
           style: TextStyle(
             fontSize: 14,
             color: Colors.grey[700],
           ),
+          textAlign: TextAlign.center,
         ),
       ],
     );
@@ -272,12 +280,14 @@ class ExpenseRow extends StatelessWidget {
 }
 
 class DashDivider extends StatelessWidget {
+  const DashDivider({super.key});
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final dashWidth = 6.0;
-        final dashSpace = 3.0;
+        const dashWidth = 6.0;
+        const dashSpace = 3.0;
         final dashCount =
             (constraints.constrainWidth() / (dashWidth + dashSpace)).floor();
         return Row(

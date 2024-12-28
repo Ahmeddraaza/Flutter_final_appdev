@@ -242,7 +242,7 @@ class _ProductDetailContentState extends State<ProductDetailContent> {
                   })
                     ..add(const SizedBox(width: 5))
                     ..add(Text(
-                      '(${productData['numberOfReviews'] ?? 0} reviews)',
+                      '(${productData['numberOfReviews'] ?? 0})',
                       style:
                           const TextStyle(fontSize: 14, color: Colors.black54),
                     )),
@@ -293,11 +293,14 @@ class _ProductDetailContentState extends State<ProductDetailContent> {
                       children: [
                         Text(
                           "Delivery Time",
-                          style: TextStyle(fontSize: 16, color: Colors.black54),
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
                         ),
                         Text(
                           "40-45 min",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(fontWeight: FontWeight.normal),
                         ),
                       ],
                     ),
